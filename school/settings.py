@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'student',
+    'classroom',
+    'course',
+    'teacher',
+    'classperiod',
     'rest_framework',
 ]
 
@@ -81,7 +86,9 @@ DATABASES = {
         'USER': 'myuser',
         'PASSWORD': 'mypassword',
         'HOST': 'localhost', 
-        'PORT': '5432',  
+        'PORT': '5432', 
+         
+        
     }
 }
 
@@ -130,8 +137,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
+from rest_framework import permissions
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+         'rest_framework.permissions.IsAuthenticatedOrReadOnly'
     ]
 }
+

@@ -1,7 +1,7 @@
 
 from django.db import models
 
-class course(models.Model):
+class Course(models.Model):
     course= models.CharField(max_length=20)
     duration_of_course= models.DateField()
     number_of_students= models.IntegerField()
