@@ -1,16 +1,15 @@
+from classroom.models import Class
 from django.db import models
 
+from course.models import Course
+
 class ClassPeriod(models.Model):
-    start_time = models.TimeField()
-    end_time = models.TimeField()
-    course = models.CharField(max_length=100)
-    course_level = models.CharField(max_length=2,blank=True, null=True)
-    teacher = models.CharField(max_length=20, blank=True, null=True)
-    classroom = models.CharField(max_length=50)
-    day_of_week = models.CharField(max_length=2)
-    semester = models.IntegerField(blank=True, null=True)
-    year = models.IntegerField()
-    def __str__(self):
-        return f"{self.course} ({self.day_of_week})"
-
-
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    classroom = models.ForeignKey(Class, on_delete=models.CASCADE)
+    day_of_the_week = models.CharField(max_length=10)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

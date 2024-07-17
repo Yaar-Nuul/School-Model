@@ -8,6 +8,7 @@ class Class(models.Model):
   courses= models.CharField(max_length=25)
   available_equipments= models.TextField()
   description = models.TextField()
+  
 def __str__(self):
   return f"{self.class_name}"
 
